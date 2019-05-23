@@ -1,0 +1,19 @@
+version: "3"
+services:
+  src:
+    build: src
+    command: dotnet trace-statuscode.dll
+    ports:
+     - "8080:8080"
+    environment:
+     - "ASPNETCORE_ENVIRONMENT=Development"
+     - "DD_AGENT_HOST=datadog"
+     - "DD_SERVICE_NAME=exception-tester"
+  datadog:
+    image: datadog/docker-dd-agent
+    links:
+     - src
+    environment:
+     - DD_API_KEY=<REPLACEME>
+     - DD_APM_ENABLED=true
+     - DD_APM_NON_LOCAL_TRAFFIC=true
