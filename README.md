@@ -7,7 +7,7 @@ This .NET Core Web API application demonstrates error handling and reporting via
 Clone the respository and set the `DD_API_KEY` environment variable on the `datadog` container. Start the agent and application with the following command:
 
 ```
-docker-compose up --build src
+docker-compose up --build
 ```
 
 Once both containers have started trigger error handling traces with the following commands:
